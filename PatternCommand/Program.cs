@@ -22,6 +22,8 @@ namespace PatternCommand
             return new ICommand[] {
                 new MaxDate(new DateTime(2015, 7, 20), new DateTime(2016, 7, 20)),
                 new MinDate(new DateTime(2015, 7, 20), new DateTime(2016, 7, 20)),
+                new PlusMonth( new DateTime(2015, 12, 20)),
+                new SecToDate( 350000),
             };
                                
         }
