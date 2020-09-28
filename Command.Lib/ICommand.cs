@@ -10,8 +10,8 @@ namespace Command.Lib
     {
         int status { get; }
         DateTime result { get; }
+        string descript { get; }
         void Excecute();
-        string description();
 
     }
 }

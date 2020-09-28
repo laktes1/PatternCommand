@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Command.Lib
 {
-    class Command
+    public class Command
     {
+        public DateTime result { get; set; }
+        public int status { get; set; }
+        public string descript { get; set; }
     }
 }

@@ -17,11 +17,11 @@ namespace Command.Lib
         }
         public void ExecuteCommand(ICommand cmd)
         {
-            Console.WriteLine("START: " + DateTime.Now.Hour+ " " + DateTime.Now.Minute + " " + DateTime.Now.Second + " " + DateTime.Now.Millisecond);
+            Console.WriteLine("START: " + DateTime.Now.ToString("HH:mm:ss:fff"));
             cmd.Excecute();
-            Console.WriteLine("FINISH: " + DateTime.Now.Hour + " " + DateTime.Now.Minute + " " + DateTime.Now.Second + " " + DateTime.Now.Millisecond);
-            Console.WriteLine(cmd.description());
-            Console.WriteLine(cmd.result);
+            Console.WriteLine("FINISH: " + DateTime.Now.ToString("HH:mm:ss:fff"));
+            Console.WriteLine(cmd.descript);
+            Console.WriteLine(cmd.result.ToString("dd:MM:yyyy"));
             Console.WriteLine();
         }
     }

@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Command.Lib
 {
-    public class MinDate : ICommand
+    public class MinDate : Command, ICommand
     {
-        public int status { get ; set ; }
-        public DateTime result { get; set; }
-        public DateTime d1 { get; set; }
+        public DateTime d1 { get ; set; }
         public DateTime d2 { get ; set ; }
 
         public MinDate(DateTime d1, DateTime d2)
@@ -18,13 +16,8 @@ namespace Command.Lib
             this.d1 = d1;
             this.d2 = d2;
             this.status = 0;
+            this.descript = " MinDate ";
         }
-
-        public string description()
-        {
-            return " mindate ";
-        }
-
         public void Excecute()
         {
             if (d1 < d2) this.result = d1;
