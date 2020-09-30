@@ -8,10 +8,7 @@ namespace Command.Lib
 {
     public interface ICommand 
     {
-        //        int status { get; }
-//        enum CommandState{get; };
         DateTime result { get; }
-        string descript { get; }
         void Excecute();
 
     }

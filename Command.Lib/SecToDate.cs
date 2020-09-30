@@ -11,16 +11,17 @@ namespace Command.Lib
         private double seconds { get; }
         public SecToDate(int seconds)
         {
+            this.status = CommandState.creation;
             this.seconds = seconds;
-//            this.status = 0;
-            this.descript = " SecToDate ";
+            this.status = CommandState.established;
         }
         public override void Excecute()
         {
+            this.status = CommandState.executing;
             DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddSeconds(this.seconds);
             this.result = dtDateTime;
-//            this.status = 1;
+            this.status = CommandState.executed;
         }
     }
 }

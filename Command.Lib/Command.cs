@@ -9,14 +9,16 @@ namespace Command.Lib
     public abstract class Command : ICommand
     {
         public DateTime result { get; set; }
-//        public int status { get; set; }
-        public enum CommandState : int{
-        NONE,
-        CREATE,
-        EXECUTING,
-        EXECUTE,
-        FAILD}
-        public string descript { get; set; }
         public abstract void Excecute();
+        public CommandState status;
+        public enum CommandState
+        {
+            NONE,
+            creation,
+            established,
+            executing,
+            executed,
+            FAILED
+        }
     }
 }

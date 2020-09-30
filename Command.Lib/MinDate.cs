@@ -12,12 +12,13 @@ namespace Command.Lib
 
         public MinDate(IEnumerable<DateTime> dates)
         {
+            this.status = CommandState.creation;
             this.dates = dates;
-            //            this.status = 0;
-            this.descript = " MinDate ";
+            this.status = CommandState.established;
         }
         public override void Excecute()
         {
+            this.status = CommandState.executing;
             this.result = new DateTime(9999, 12, 31);
 
             foreach (DateTime date in dates)
@@ -25,7 +26,8 @@ namespace Command.Lib
                 if (date < result)
                     result = date;
             }
-            //this.status = 1;
+
+            this.status = CommandState.executed;
         }
     }
 }

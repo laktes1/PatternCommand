@@ -11,14 +11,15 @@ namespace Command.Lib
         private DateTime date { get; set; } 
         public PlusMonth(DateTime date)
         {
+            this.status = CommandState.creation;
             this.date = date;
-//            this.status = 0;
-            this.descript = " PlusMonth ";
+            this.status = CommandState.established;
         }
         public override void Excecute()
         {
+            this.status = CommandState.executing;
             this.result = this.date.AddMonths(1);
-//            this.status = 1;
+            this.status = CommandState.executed;
         }
     }
 }

@@ -12,12 +12,13 @@ namespace Command.Lib
         
         public MaxDate(IEnumerable<DateTime> dates)
         {
+            this.status = CommandState.creation;
             this.dates = dates;
-//            this.status = 0;
-            this.descript = " MaxDate ";
+            this.status = CommandState.established;
         }
         public override void Excecute()
         {
+            this.status = CommandState.executing;
             this.result = new DateTime(0001, 01, 01);
 
             foreach (DateTime date in dates)
@@ -25,7 +26,7 @@ namespace Command.Lib
                 if (date > result)
                     result = date;
             }
-            //this.status = 1;
+            this.status = CommandState.executed;
         }
     }
 }
