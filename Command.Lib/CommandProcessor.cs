@@ -8,21 +8,24 @@ namespace Command.Lib
 {
     public class CommandProcessor
     {
-        public void ExecuteBatch(ICommand[] batch)
+        public void ExecuteBatch(IEnumerable<ICommand> batch)
         {
             foreach (ICommand command in batch )
             {
                 ExecuteCommand(command);
             }
         }
-        public void ExecuteCommand(ICommand cmd)
+        private void ExecuteCommand(ICommand cmd)
         {
-            Console.WriteLine("START: " + DateTime.Now.ToString("HH:mm:ss:fff"));
+            Log(string.Format( "START time: {0} desript: {1}", DateTime.Now.ToString("HH:mm:ss.fff"), cmd.descript));
             cmd.Excecute();
-            Console.WriteLine("FINISH: " + DateTime.Now.ToString("HH:mm:ss:fff"));
-            Console.WriteLine(cmd.descript);
-            Console.WriteLine(cmd.result.ToString("dd:MM:yyyy"));
-            Console.WriteLine();
+            Log(string.Format("FINISH time: {0} result: {1} ", DateTime.Now.ToString("HH:mm:ss.fff"), cmd.result.ToString("dd.MM.yyyy")));
+            Log(" ");
+        }
+
+        private void Log(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }

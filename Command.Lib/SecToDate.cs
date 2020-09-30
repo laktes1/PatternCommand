@@ -8,22 +8,19 @@ namespace Command.Lib
 {
     public class SecToDate : Command, ICommand
     {
-        double seconds { get; set; }
+        private double seconds { get; }
         public SecToDate(int seconds)
         {
             this.seconds = seconds;
-            this.status = 0;
+//            this.status = 0;
             this.descript = " SecToDate ";
         }
-        public void Excecute()
+        public override void Excecute()
         {
-            //            int year = seconds/60/60/24/30/365;
-            //            this.result = new DateTime(2015, 7, 20);
-            //            this.result = DateTime.FromFileTime(this.seconds);
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddSeconds(this.seconds).ToLocalTime();
             this.result = dtDateTime;
-
+//            this.status = 1;
         }
     }
 }

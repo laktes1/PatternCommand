@@ -6,23 +6,26 @@ using System.Threading.Tasks;
 
 namespace Command.Lib
 {
-    public class MaxDate : Command, ICommand
+    public class MaxDate : Command
     {
-        public DateTime d1 { get ; set; }
-        public DateTime d2 { get ; set ; }
+        private IEnumerable<DateTime> dates { get ; set; }
         
-        public MaxDate(DateTime d1, DateTime d2)
+        public MaxDate(IEnumerable<DateTime> dates)
         {
-            this.d1 = d1;
-            this.d2 = d2;
-            this.status = 0;
+            this.dates = dates;
+//            this.status = 0;
             this.descript = " MaxDate ";
         }
-        public void Excecute()
+        public override void Excecute()
         {
-            if (d1 >= d2) this.result = d1;
-            else this.result = d2;
-            this.status = 1;
+            this.result = new DateTime(0001, 01, 01);
+
+            foreach (DateTime date in dates)
+            {
+                if (date > result)
+                    result = date;
+            }
+
         }
     }
 }
