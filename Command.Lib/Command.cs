@@ -10,7 +10,7 @@ namespace Command.Lib
     {
         public DateTime result { get; set; }
 //        public int status { get; set; }
-        public enum CommandState{
+        public enum CommandState : int{
         NONE,
         CREATE,
         EXECUTING,

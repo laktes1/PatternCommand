@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Command.Lib
 {
-    public class SecToDate : Command, ICommand
+    public class SecToDate : Command
     {
         private double seconds { get; }
         public SecToDate(int seconds)
@@ -18,7 +18,7 @@ namespace Command.Lib
         public override void Excecute()
         {
             DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            dtDateTime = dtDateTime.AddSeconds(this.seconds).ToLocalTime();
+            dtDateTime = dtDateTime.AddSeconds(this.seconds);
             this.result = dtDateTime;
 //            this.status = 1;
         }

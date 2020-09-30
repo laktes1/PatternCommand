@@ -17,10 +17,11 @@ namespace Command.Lib
         }
         private void ExecuteCommand(ICommand cmd)
         {
-            Log(string.Format( "START time: {0} desript: {1}", DateTime.Now.ToString("HH:mm:ss.fff"), cmd.descript));
+            //            Log(string.Format("START time: {0} desript: {1}", DateTime.UtcNow.ToString("HH:mm:ss.fff"), cmd.descript));
+            Log(string.Format("START time: {0} desript: {1}", DateTime.UtcNow.ToString("HH:mm:ss.fff"), GetType(cmd).Name.ToString);
+//            Log(string.Format( "START time: {0} desript: {1}", DateTime.UtcNow.ToString("HH:mm:ss.fff"), GetType(cmd.GetType).FullName ));
             cmd.Excecute();
-            Log(string.Format("FINISH time: {0} result: {1} ", DateTime.Now.ToString("HH:mm:ss.fff"), cmd.result.ToString("dd.MM.yyyy")));
-            Log(" ");
+            Log(string.Format("FINISH time: {0} result: {1} \n", DateTime.UtcNow.ToString("HH:mm:ss.fff"), cmd.result.ToString("dd.MM.yyyy")));
         }
 
         private void Log(string message)

@@ -25,7 +25,7 @@ namespace Command.Lib
                 if (date > result)
                     result = date;
             }
-
+            //this.status = 1;
         }
     }
 }

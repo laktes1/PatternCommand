@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Command.Lib
 {
-    public class PlusMonth : Command, ICommand
+    public class PlusMonth : Command
     {
-        private DateTime d1 { get; set; }
-        public PlusMonth(DateTime d1)
+        private DateTime date { get; set; } 
+        public PlusMonth(DateTime date)
         {
-            this.d1 = d1;
+            this.date = date;
 //            this.status = 0;
             this.descript = " PlusMonth ";
         }
         public override void Excecute()
         {
-            this.result = this.d1.AddMonths(1);
+            this.result = this.date.AddMonths(1);
 //            this.status = 1;
         }
     }
