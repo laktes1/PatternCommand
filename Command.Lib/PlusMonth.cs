@@ -12,6 +12,7 @@ namespace Command.Lib
         public PlusMonth(DateTime date)
         {
             this.status = CommandState.creation;
+            CheckDate(date);
             this.date = date;
             this.status = CommandState.established;
         }
@@ -20,6 +21,11 @@ namespace Command.Lib
             this.status = CommandState.executing;
             this.result = this.date.AddMonths(1);
             this.status = CommandState.executed;
+        }
+
+        public override string ToString()
+        {
+            return "Плюс месяц";
         }
     }
 }

@@ -8,17 +8,30 @@ namespace Command.Lib
 {
     public abstract class Command : ICommand
     {
-        public DateTime result { get; set; }
+        public DateTime result { get; set ; }
+        public CommandState status { get ; protected set ; }
         public abstract void Excecute();
-        public CommandState status;
-        public enum CommandState
+        
+        protected void CheckDates(IEnumerable< DateTime> dates)
         {
-            NONE,
-            creation,
-            established,
-            executing,
-            executed,
-            FAILED
+            if (dates.Count() <= 0)
+                throw new Exception("Пустой список дат");
+            foreach (DateTime date in dates)
+            {
+                CheckDate(date);
+            }
+        }
+
+        protected void CheckDate(DateTime date)
+        {
+            if (date.ToString() == "")
+                throw new Exception("Пустая дата");
+        }
+
+        protected void CheckSecs(double seconds)
+        {
+            if (seconds.ToString() == "")
+                throw new Exception("Пустые секунды");
         }
     }
 }

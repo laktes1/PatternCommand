@@ -12,14 +12,15 @@ namespace Command.Lib
         
         public MaxDate(IEnumerable<DateTime> dates)
         {
-            this.status = CommandState.creation;
+            this.status  = CommandState.creation;
+            CheckDates(dates);
             this.dates = dates;
             this.status = CommandState.established;
         }
         public override void Excecute()
         {
             this.status = CommandState.executing;
-            this.result = new DateTime(0001, 01, 01);
+            this.result = dates.First();
 
             foreach (DateTime date in dates)
             {
@@ -27,6 +28,10 @@ namespace Command.Lib
                     result = date;
             }
             this.status = CommandState.executed;
+        }
+        public override string ToString()
+        {
+            return "Максимальная дата";
         }
     }
 }

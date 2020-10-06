@@ -9,9 +9,10 @@ namespace Command.Lib
     public class SecToDate : Command
     {
         private double seconds { get; }
-        public SecToDate(int seconds)
+        public SecToDate(double seconds)
         {
             this.status = CommandState.creation;
+            CheckSecs(seconds);
             this.seconds = seconds;
             this.status = CommandState.established;
         }
@@ -22,6 +23,10 @@ namespace Command.Lib
             dtDateTime = dtDateTime.AddSeconds(this.seconds);
             this.result = dtDateTime;
             this.status = CommandState.executed;
+        }
+        public override string ToString()
+        {
+            return "Секунды в дату";
         }
     }
 }

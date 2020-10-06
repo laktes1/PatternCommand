@@ -11,16 +11,24 @@ namespace PatternCommand
     {
         static void Main(string[] args)
         {
-            var CP1 = new CommandProcessor();
-            var ListCommand = CreateListCommand();
-            CP1.ExecuteBatch(ListCommand);
+            try
+            {
+                var CP1 = new CommandProcessor();
+                var ListCommand = CreateListCommand();
+                CP1.ExecuteBatch(ListCommand);
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine("Something wrong: {0}", e);
+            }
             Console.ReadLine();
         }
 
 
         private static IEnumerable<ICommand> CreateListCommand()
         {
-            return new ICommand[] {
+                ICommand[] cmd = new ICommand[] {
+                new MaxDate(new DateTime[] {}),
                 new MaxDate(new DateTime[]
                     {new DateTime(2015, 7, 20),
                     new DateTime(2016, 7, 20),
@@ -52,8 +60,11 @@ namespace PatternCommand
                     new DateTime(2012, 7, 20),
                     new DateTime(1992, 7, 20)}),
                 new PlusMonth(new DateTime(2015, 05, 20)),
-                new SecToDate(1601279372),
-            };
+                new SecToDate(1601279372)
+                };
+                return cmd;
+           
+           
         }
     }
 }

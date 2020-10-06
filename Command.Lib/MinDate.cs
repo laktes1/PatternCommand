@@ -14,12 +14,13 @@ namespace Command.Lib
         {
             this.status = CommandState.creation;
             this.dates = dates;
+            CheckDates(dates);
             this.status = CommandState.established;
         }
         public override void Excecute()
         {
             this.status = CommandState.executing;
-            this.result = new DateTime(9999, 12, 31);
+            this.result = dates.First();
 
             foreach (DateTime date in dates)
             {
@@ -28,6 +29,10 @@ namespace Command.Lib
             }
 
             this.status = CommandState.executed;
+        }
+        public override string ToString()
+        {
+            return "Минимальная дата";
         }
     }
 }

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Command.cs" />
     <Compile Include="CommandProcessor.cs" />
+    <Compile Include="CommandState.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="MaxDate.cs" />
     <Compile Include="MinDate.cs" />

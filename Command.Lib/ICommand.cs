@@ -9,6 +9,7 @@ namespace Command.Lib
     public interface ICommand 
     {
         DateTime result { get; }
+        CommandState status { get; }
         void Excecute();
 
     }
