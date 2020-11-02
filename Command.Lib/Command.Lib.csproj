@@ -40,15 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command.cs" />
+    <Compile Include="commands\Command.cs" />
     <Compile Include="CommandProcessor.cs" />
-    <Compile Include="CommandState.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="MaxDate.cs" />
-    <Compile Include="MinDate.cs" />
-    <Compile Include="PlusMonth.cs" />
+    <Compile Include="Intf\CommandState.cs" />
+    <Compile Include="Intf\ICommand.cs" />
+    <Compile Include="commands\MaxDate.cs" />
+    <Compile Include="commands\MinDate.cs" />
+    <Compile Include="commands\PlusMonth.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecToDate.cs" />
+    <Compile Include="commands\SecToDate.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,8 +27,8 @@ namespace PatternCommand
 
         private static IEnumerable<ICommand> CreateListCommand()
         {
-                ICommand[] cmd = new ICommand[] {
-                new MaxDate(new DateTime[] {}),
+                ICommand[] cmds = new ICommand[] {
+                //new MaxDate(new DateTime[] {}),
                 new MaxDate(new DateTime[]
                     {new DateTime(2015, 7, 20),
                     new DateTime(2016, 7, 20),
@@ -62,9 +62,7 @@ namespace PatternCommand
                 new PlusMonth(new DateTime(2015, 05, 20)),
                 new SecToDate(1601279372)
                 };
-                return cmd;
-           
-           
+                return cmds;
         }
     }
 }
