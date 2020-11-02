@@ -21,7 +21,7 @@ namespace Command.Lib
                 CheckDate(date);
             }
         }
-
+        
         protected void CheckDate(DateTime date)
         {
             if (date.ToString() == "")

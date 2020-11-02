@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Command.Lib;
+using Command.Lib.Intf;
+using Command.Lib.CommandFactory;
 
 namespace PatternCommand
 {
@@ -13,8 +15,9 @@ namespace PatternCommand
         {
             try
             {
+                var configLink = args[0];
                 var CP1 = new CommandProcessor();
-                var ListCommand = CreateListCommand();
+                var ListCommand = CreateCommands(configLink);
                 CP1.ExecuteBatch(ListCommand);
             }
             catch (Exception e)
@@ -24,6 +27,28 @@ namespace PatternCommand
             Console.ReadLine();
         }
 
+        private static IEnumerable<ICommand> CreateCommands(string configLink)
+        {
+            ICommandFactory commandFactory = CreateCommandFactory(configLink);
+
+            var commands = commandFactory.GetCommands();
+
+            return commands;
+        }
+        private static ICommandFactory CreateCommandFactory(string configLink)
+        {
+            if (configLink.StartsWith("http://") ||
+                configLink.StartsWith("https://") ||
+                configLink.StartsWith("ftp://"))
+            {
+                return new InternetCommandFactory(configLink);
+            }
+            else
+            {
+                return new LocalFileCommandFactory(configLink);
+            }
+
+        }
 
         private static IEnumerable<ICommand> CreateListCommand()
         {
