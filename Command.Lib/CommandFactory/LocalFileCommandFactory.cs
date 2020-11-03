@@ -11,12 +11,10 @@ namespace Command.Lib.CommandFactory
     public class LocalFileCommandFactory : ICommandFactory
     {
         public string ConfigFilePath { get; private set; }
-
         public LocalFileCommandFactory(string configFilePath)
         {
             this.ConfigFilePath = configFilePath;
         }
-
         public IEnumerable<ICommand> GetCommands()
         {
             if (!File.Exists(this.ConfigFilePath))
