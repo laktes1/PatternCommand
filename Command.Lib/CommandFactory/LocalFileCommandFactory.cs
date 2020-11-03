@@ -23,26 +23,19 @@ namespace Command.Lib.CommandFactory
             {
                 throw new ArgumentException(string.Format("ConfigFile '{0}' does not exist", this.ConfigFilePath));
             }
-            IniFiles INI = new IniFiles(this.ConfigFilePath);
-
             var result = new List<ICommand>();
 
-            INI.GetPrivateProfileSection("Commands", this.ConfigFilePath, out IEnumerable<string> templist);
-            foreach (string line in templist)
+            IniFiles INI = new IniFiles(this.ConfigFilePath);
+            INI.GetPrivateProfileSection("Commands", this.ConfigFilePath, out IEnumerable<string> Cmds);
+
+            foreach (string line in Cmds)
             {
-
                 var configItems = line.Split('=');
-
                 var commandType = configItems[0].ToLower();
-
-                var commandParameters = configItems.Skip(1).ToArray();
+                var commandParameters = configItems[1].Split('\t');          
                 var command = CreateCommand(commandType, commandParameters);
-                
-
                 result.Add(command);
-
             }
-
             return result;
         }
 
@@ -63,31 +56,36 @@ namespace Command.Lib.CommandFactory
             }
         }
 
-        private ICommand CreatePlusMonth(string[] commandParameters)
+        private ICommand CreatePlusMonth(string[] commandParametersIn)
         { 
-            var result = new PlusMonth(Convert.ToDateTime(commandParameters.First()) );
+            var result = new PlusMonth(Convert.ToDateTime(commandParametersIn.First()) );
             return result;
         }
 
-        private ICommand CreateSecToDate(string[] commandParameters)
+        private ICommand CreateSecToDate(string[] commandParametersIn)
         {
-            var result = new SecToDate(Convert.ToInt64(commandParameters.First()));
+            var result = new SecToDate(Convert.ToInt64(commandParametersIn.First()));
             return result;
         }
-        private ICommand CreateMaxDate(string[] commandParameters)
+        private ICommand CreateMaxDate(string[] commandParametersIn)
         {
-            throw new ArgumentException(string.Format("MaxDate does not exist {0}", this.ConfigFilePath));
-            //var collections = CollectionList.CreateFromCSVStringArray(commandParameters);
-
-            //var result = new Commands.Command_Join(collections);
-            //return result;
+            var commandParametersOut = new List<DateTime>();
+            foreach (string temp in commandParametersIn)
+                commandParametersOut.Add(DateTime.Parse(temp));
+            
+            var result = new MaxDate(commandParametersOut);
+            return result;
         }
-        private ICommand CreateMinDate(string[] commandParameters)
+        private ICommand CreateMinDate(string[] commandParametersIn)
         {
-            throw new ArgumentException(string.Format("MinDate does not exist {0}", this.ConfigFilePath));
-            //var result = new MinDate( );
-            //return result;
+            var commandParametersOut = new List<DateTime>();
+            foreach (string temp in commandParametersIn)
+                commandParametersOut.Add(DateTime.Parse(temp));
+
+            var result = new MinDate(commandParametersOut);
+            return result;
         }
 
     }
 }
+
