@@ -44,6 +44,7 @@
     <Compile Include="CommandFactory\LocalFileCommandFactory.cs" />
     <Compile Include="commands\CommandBase.cs" />
     <Compile Include="CommandProcessor.cs" />
+    <Compile Include="IniFiles.cs" />
     <Compile Include="Intf\CommandState.cs" />
     <Compile Include="Intf\ICommand.cs" />
     <Compile Include="commands\MaxDate.cs" />
