@@ -16,8 +16,8 @@ namespace PatternCommand
             try
             {
                 //var configLink = args[0];
-                var configLink = "C://set.ini";
-                //var configLink = "ftp://192.168.0.2:2221/Download/set.ini";
+                //var configLink = "C://set.ini";
+                var configLink = "ftp://192.168.0.2:2121/Download/set.ini";
                 var CP1 = new CommandProcessor();
                 var ListCommand = CreateCommands(configLink);
                 CP1.ExecuteBatch(ListCommand);

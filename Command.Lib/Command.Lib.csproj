@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandFactory\CommandFactoryBase.cs" />
     <Compile Include="CommandFactory\InternetCommandFactory.cs" />
     <Compile Include="CommandFactory\LocalFileCommandFactory.cs" />
     <Compile Include="commands\CommandBase.cs" />
